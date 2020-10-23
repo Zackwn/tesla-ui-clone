@@ -1,7 +1,8 @@
 import React, { useCallback, useRef, useState } from 'react';
+import ModelOverlay from '../ModelOverlay';
 import ModelsContext, { CarModel } from '../ModelsContext';
 
-import { Container } from './style'
+import { Container, OverlayRoot } from './style'
 
 const ModelWrapper: React.FC = ({ children }) => {
   const modelWrapperRef = useRef<HTMLDivElement>(null)
@@ -35,6 +36,14 @@ const ModelWrapper: React.FC = ({ children }) => {
       }}
     >
       <Container ref={modelWrapperRef}>
+        <OverlayRoot>
+          {registeredModels.map(registeredModel => {
+            return (
+              <ModelOverlay key={registeredModel.modelName} >{registeredModel.overlayNode}</ModelOverlay>
+            )
+          })}
+        </OverlayRoot>
+
         {children}
       </Container>
     </ModelsContext.Provider>

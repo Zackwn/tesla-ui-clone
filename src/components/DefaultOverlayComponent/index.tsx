@@ -14,12 +14,12 @@ const DefaultOverlayComponent: React.FC<DefaultOverlayComponentProps> = ({
     <Container>
       <Heading>
         <h1>{label}</h1>
-        <h1>{description}</h1>
+        <h2>{description}</h2>
       </Heading>
 
       <Buttons>
-        <button>Something</button>
-        <button className='white' >Otherthing</button>
+        <button>custom order</button>
+        <button className='white' >existing inventory</button>
       </Buttons>
     </Container>
   )
