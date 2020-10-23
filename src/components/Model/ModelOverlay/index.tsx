@@ -35,7 +35,7 @@ const ModelOverlay: React.FC<ModelOverlayProps> = ({ model, children }) => {
 
   const sectionScrollProgress = useTransform(
     scrollY,
-    (y) => { console.log(y); return (y - sectionDimensions.offsetTop) / sectionDimensions.offsetHeight }
+    (y) => (y - sectionDimensions.offsetTop) / sectionDimensions.offsetHeight
   )
 
   const opacity = useTransform(
