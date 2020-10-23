@@ -35,7 +35,7 @@ const ModelOverlay: React.FC<ModelOverlayProps> = ({ model, children }) => {
 
   const sectionScrollProgress = useTransform(
     scrollY,
-    (y) => (y - sectionDimensions.offsetTop) / sectionDimensions.offsetHeight
+    (y) => { console.log(y); return (y - sectionDimensions.offsetTop) / sectionDimensions.offsetHeight }
   )
 
   const opacity = useTransform(
@@ -44,8 +44,13 @@ const ModelOverlay: React.FC<ModelOverlayProps> = ({ model, children }) => {
     [0, 1, 1, 0]
   )
 
+  const pointerEvents = useTransform(
+    opacity,
+    (Opacity) => Opacity > 0 ? 'auto' : 'none'
+  )
+
   return (
-    <Container style={{ opacity }}>
+    <Container style={{ opacity, userSelect: pointerEvents }}>
       {children}
     </Container>
   )
